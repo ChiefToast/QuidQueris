@@ -1,0 +1,223 @@
+body {
+    background-color: #222;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    pointer-events: none;
+    display: flex;
+}
+
+@font-face {
+    font-family: Pixeloid;
+    src: url(PixeloidSans-JR6qo.ttf);
+}
+
+.overlay.content {
+    font-family: Pixeloid;
+    z-index: 725;
+    text-align: center;
+    margin: 0;
+    margin-left: 50%;
+    margin-right: 50%;
+    transform: translateY(50%);
+    width: 40%;
+    font-size: 24px;
+    color: #00FF00;
+    text-shadow: 0px 0px 3px #00FF00;
+    filter: saturate(1.6), sepia(.3);
+}
+
+.overlay.noise {
+    z-index: 800;
+    animation: grain 8s steps(10) infinite;
+    background-image: url('img/noise.png');
+    height: 400%;
+    left: -50%;
+    top: -150%;
+    width: 300%;
+    background-size: auto;
+    opacity: .2;
+}
+
+.overlay.flicker {
+    z-index: 950;
+    background: rgba(9, 8, 8, 0.131);
+    animation: flicker .05s infinite;
+    animation-timing-function: linear
+}
+
+.overlay.radial {
+    z-index: 750;
+    background: radial-gradient(rgba(199, 199, 199, 0.106) 10%, rgba(0, 0, 0, 0.206) 75%);
+}
+
+.overlay.scanline {
+    z-index: 1010;
+    animation: scanline 7.77s linear infinite
+}
+
+.overlay.scanline::after {
+    height: 3px;
+    width: 100%;
+    background: rgb(32, 32, 32);
+    opacity: .75;
+    pointer-events: none;
+    content: ''
+}
+
+.overlay.scanline.ghost {
+    background-image: url(img/ghost.png);
+    background-repeat: repeat-x;
+    opacity: .3;
+    background-size: 100px;
+}
+
+
+#whitespace {
+    color: #00ff00;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    transform: translateY(-5px);
+    animation: blinker 2.5s infinite;
+    animation-timing-function: steps(1, start);
+    mix-blend-mode: difference;
+}
+
+.overlay.crt {
+    z-index: 730;
+    background-image: url('img/back.png');
+    background-size: 20px;
+    background-repeat: round;
+    opacity: .5;
+}
+
+.overlay.vertical {
+    z-index: 730;
+    background-image: url('img/backvert.png');
+    background-size: 20px;
+    opacity: .5;
+}
+
+@keyframes grain {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    10% {
+        transform: translate(-5%, -10%)
+    }
+
+    20% {
+        transform: translate(-15%, 5%)
+    }
+
+    30% {
+        transform: translate(7%, -25%)
+    }
+
+    40% {
+        transform: translate(-5%, 25%)
+    }
+
+    50% {
+        transform: translate(-15%, 10%)
+    }
+
+    60% {
+        transform: translate(15%, 0%)
+    }
+
+    70% {
+        transform: translate(0%, 15%)
+    }
+
+    80% {
+        transform: translate(3%, 35%)
+    }
+
+    90% {
+        transform: translate(-10%, 10%)
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0
+    }
+
+    10% {
+        opacity: .9
+    }
+
+    20% {
+        opacity: .99
+    }
+
+    30% {
+        opacity: 0
+    }
+
+    40% {
+        opacity: .9
+    }
+
+    50% {
+        opacity: .99
+    }
+
+    60% {
+        opacity: 0
+    }
+
+    70% {
+        opacity: .9
+    }
+
+    80% {
+        opacity: .99
+    }
+
+    90% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: .9
+    }
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(100%)
+    }
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1
+    }
+
+    25% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    75% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
